@@ -1,1 +1,48 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f4f8;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.malla {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.anio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.anio h2 {
+  margin-bottom: 10px;
+}
+
+.materia {
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 10px;
+  background-color: #b3d9ff;
+  cursor: pointer;
+  transition: background 0.3s;
+  user-select: none;
+}
+
+.materia:hover {
+  background-color: #80c1ff;
+}
+
+.bloqueada {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
 
