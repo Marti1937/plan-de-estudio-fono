@@ -3,98 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Malla Interactiva - Fonoaudiología</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      padding: 1rem;
-    }
-    h1 {
-      text-align: center;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    .year-column {
-      background-color: #314B6E;
-      color: white;
-      border-radius: 10px;
-      padding: 0.5rem;
-    }
-    .year-column h2 {
-      text-align: center;
-    }
-    .subject {
-      background-color: #607EA2;
-      margin: 0.5rem 0;
-      padding: 0.5rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .subject.locked {
-      background-color: #B7B7AC;
-      cursor: not-allowed;
-    }
-    .subject.completed {
-      background-color: #0E141C;
-      color: white;
-    }
-  </style>
+  <title>Malla Interactiva</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Malla Interactiva - Fonoaudiología</h1>
-  <div class="grid" id="malla"></div>
+  <h1>Plan de Estudio</h1>
+  <div class="malla">
+    <div class="anio" id="anio1">
+      <h2>1er Año</h2>
+      <div class="materia" data-id="mat1" data-correlativas="">Matemática I</div>
+      <div class="materia" data-id="prog1" data-correlativas="">Programación I</div>
+    </div>
+    <div class="anio" id="anio2">
+      <h2>2do Año</h2>
+      <div class="materia bloqueada" data-id="mat2" data-correlativas="mat1">Matemática II</div>
+      <div class="materia bloqueada" data-id="prog2" data-correlativas="prog1">Programación II</div>
+    </div>
+    <!-- Agrega más años y materias -->
+  </div>
 
-  <script>
-    const subjects = [
-      // Ejemplo de materias
-      { year: 1, name: \"Introducción a la Fonoaudiología\", code: \"1\", prerequisites: [] },
-      { year: 1, name: \"Biología Humana\", code: \"2\", prerequisites: [] },
-      { year: 2, name: \"Sistema del Cuerpo Humano I\", code: \"3\", prerequisites: [\"2\"] },
-      { year: 2, name: \"Lenguaje y Comunicación\", code: \"4\", prerequisites: [\"1\"] },
-      { year: 3, name: \"Adquisición del Lenguaje\", code: \"5\", prerequisites: [\"4\"] }
-      // Aca se agregan todas las materias y correlativas
-    ];
-
-    const completedSubjects = new Set();
-    const malla = document.getElementById('malla');
-    const years = [1, 2, 3, 4, 5];
-
-    function isUnlocked(subject) {
-      return subject.prerequisites.every(pr => completedSubjects.has(pr));
-    }
-
-    function renderMalla() {
-      malla.innerHTML = '';
-      years.forEach(year => {
-        const column = document.createElement('div');
-        column.className = 'year-column';
-        column.innerHTML = `<h2>Año ${year}</h2>`;
-        subjects.filter(s => s.year === year).forEach(subject => {
-          const div = document.createElement('div');
-          div.className = 'subject';
-          div.textContent = subject.name;
-          if (!isUnlocked(subject)) div.classList.add('locked');
-          else if (completedSubjects.has(subject.code)) div.classList.add('completed');
-
-          div.onclick = () => {
-            if (isUnlocked(subject)) {
-              completedSubjects.add(subject.code);
-              renderMalla();
-            }
-          };
-          column.appendChild(div);
-        });
-        malla.appendChild(column);
-      });
-    }
-
-    renderMalla();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
