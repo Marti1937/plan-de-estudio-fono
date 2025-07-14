@@ -3,24 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Malla Interactiva</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Malla Fonoaudiología</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>Plan de Estudio</h1>
-  <div class="malla">
-    <div class="anio" id="anio1">
-      <h2>1er Año</h2>
-      <div class="materia" data-id="mat1" data-correlativas="">Matemática I</div>
-      <div class="materia" data-id="prog1" data-correlativas="">Programación I</div>
-    </div>
-    <div class="anio" id="anio2">
-      <h2>2do Año</h2>
-      <div class="materia bloqueada" data-id="mat2" data-correlativas="mat1">Matemática II</div>
-      <div class="materia bloqueada" data-id="prog2" data-correlativas="prog1">Programación II</div>
-    </div>
-    <!-- Agrega más años y materias -->
-  </div>
+  <h1 class="titulo">Malla Interactiva - Fonoaudiología</h1>
+  <div id="malla" class="malla"></div>
 
   <script src="script.js"></script>
 </body>
